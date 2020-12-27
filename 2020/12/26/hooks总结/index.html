@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1</span>
+            <span class="post-count">398</span>
         </span>
     </span>
 
@@ -86,13 +86,26 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>sdfasdfas</p>
+  <h1>HOOK是什么</h1>
+这是一个比class更直观的新写法，在这个写法中react组件都是纯函数，没有生命周期函数，但可以像class一样拥有state，可以由effect触发生命周期更新，提供一种新的思路来写react。（虽然官方再三声明我们绝对没有要拿掉class的意思，但hook未来的目标是覆盖所有class的应用场景）
+
+
+
+<p>基本的Hook的API有三个</p>
+<p>useState(相当于state)<br>useEffect(相当于componentDidUpdate, componentDidMount, componentWillUnmount)<br>useContext(相当于Context api)</p>
+<p>useState(initialState)也是一个函数，定义了一个state，初始值为initialState，返回值是一个数组</p>
+<p>useEffect<br>这个api可以让你在函数组件中使用副作用(use side effects)，常见的会产生副作用的方式有获取数据，更新dom，绑定事件监听等，render只负责渲染，一般会等到dom加载好之后再去调用这些副作用方法。</p>
+<p>Context用于在组件之间传递数据。useContext接受一个context对象(React.createContext生成)，返回context.Consumer中获得的值。</p>
+<p><strong>为什么要用HOOK</strong></p>
+<p>class组件间不能复用与state关联的代码，hook可以做到这一点。<br>复杂而庞大的class组件很难被理解，hook能够让你把组件拆成更小的独立单元<br>理解class是一件困难的事，无论是对人还是对开发工具而言都是这样。比如class里面的this指向的是组件，在箭头函数写法出来之前，我们不得不手动绑定this到调用函数的对象上。</p>
  
       <!-- reward -->
       
