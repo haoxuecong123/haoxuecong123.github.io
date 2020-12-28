@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">2.2k</span>
+            <span class="post-count">2.3k</span>
         </span>
     </span>
 
@@ -98,35 +98,11 @@
 
 <p>类的由来<p>
 
-<script>
-ES5写法：
-function Point(x, y) {
-  this.x = x;
-  this.y = y;
-}
 
-Point.prototype.toString = function () {
-  return '(' + this.x + ', ' + this.y + ')';
-};
-
-var p = new Point(1, 2);
-</script>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ES5写法：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.x = x;</span><br><span class="line">  <span class="built_in">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;(&#x27;</span> + <span class="built_in">this</span>.x + <span class="string">&#x27;, &#x27;</span> + <span class="built_in">this</span>.y + <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p>ES6提供了更接近传统语言的写法，引入了class类这个概念，作为对象的模板，通过class关键字，可以定义类；基本上，ES6的class可以看作只是一个语法糖，他的绝大部分功能，ES5都可以做到，新的class写法只是让对象圆形写法更加清晰、更像面向对象编程的语法而已。<br>用ES6的class改写：</p>
-<script>
-class Point {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  toString() {
-    return '(' + this.x + ', ' + this.y + ')';
-  }
-}
-
-案例中，定义一个类，可以看到有一个constructor（）方法，这就是构造方法，而this关键字就代表实例对象，与上面ES5的构造函数point是一致的；point类除了构造方法，还定义了一个toString（）方法，<b>定义toString（）方法是，前面不用加function这个关键字，直接把函数定义放进去就可以了，另外，方法与方法之间不需要逗号分隔，加了会报错；<b>
-</script>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">x, y</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">toString</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;(&#x27;</span> + <span class="built_in">this</span>.x + <span class="string">&#x27;, &#x27;</span> + <span class="built_in">this</span>.y + <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>案例中，定义一个类，可以看到有一个constructor（）方法，这就是构造方法，而this关键字就代表实例对象，与上面ES5的构造函数point是一致的；point类除了构造方法，还定义了一个toString（）方法，<b>定义toString（）方法是，前面不用加function这个关键字，直接把函数定义放进去就可以了，另外，方法与方法之间不需要逗号分隔，加了会报错；<b></p>
 <p>ES6的类，完全可以看作构造函数的另一种写法；
 类的数据类型就是函数，类本身就指向构造函数
 使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致
@@ -148,16 +124,8 @@ constructor()方法是类默认方法，通过new命令生成对象实例时，�
 <p>
 生成类的实例的写法，与ES5完全一样，也是使用new命令，如果忘记加上new，像函数那样调用class，将会报错；
 
-<script>
-class Point{
 
-}
-var point=new Point(2,3)//正确
-
-var point=Point(2,3)//错误
-
-</p>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> point=<span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">3</span>)<span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> point=Point(<span class="number">2</span>,<span class="number">3</span>)<span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <h2>取值函数（getter）和存值函数（setter）</h2>
 <p>
 与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
@@ -173,33 +141,11 @@ var point=Point(2,3)//错误
 <p>
 与函数一样，类也可以使用表达式的形式定义
 
-<script>
-const MyClass = class Me {
-  getClassName() {
-    return Me.name;
-  }
-};
-这段代码使用表达式定义了一个类，需要注意的是，这个类的名字是Me，但是Me只在class的内不可用，指当前的类，在class外部，这个类只能用MyClass引用
 
-
-采用Class表达式，可以写出立即执行的Class
-
-<script>
-let person = new class {
-  constructor(name) {
-    this.name = name;
-  }
-
-  sayName() {
-    console.log(this.name);
-  }
-}('张三');
-
-person.sayName();
-person是一个立即执行的类的实例。
-</p>
-
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyClass = <span class="class"><span class="keyword">class</span> <span class="title">Me</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">getClassName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Me.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这段代码使用表达式定义了一个类，需要注意的是，这个类的名字是Me，但是Me只在class的内不可用，指当前的类，在class外部，这个类只能用MyClass引用</p>
+<p>采用Class表达式，可以写出立即执行的Class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">sayName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;(<span class="string">&#x27;张三&#x27;</span>);</span><br><span class="line"></span><br><span class="line">person.sayName();</span><br><span class="line">person是一个立即执行的类的实例。</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <h1>需要注意点</h1>
 <p>
 <strong>严格模式</strong>
@@ -212,13 +158,9 @@ person是一个立即执行的类的实例。
 new Foo()
 class Foo{}
 此段代码，Fo类使用前，定义在后，这样会报错，因为ES6不会把类的生命提升到代码头部。这种规定的原因与下文要提到继承有关，必须保证子类在父类之后定义；
-{
-  let Foo=class{}
-  class Bar extends Foo{
 
-  }
-}
-上面的代码不会报错，因为Bar继承Foo的时候，Foo已经有定义了。但是，如果存在class的提升，上面代码就会报错，因为class会被提升到代码头部，而let命令是不提升的，所以导致Bar继承Foo的时候，Foo还没有定义。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> Foo=<span class="class"><span class="keyword">class</span></span>&#123;&#125;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码不会报错，因为Bar继承Foo的时候，Foo已经有定义了。但是，如果存在class的提升，上面代码就会报错，因为class会被提升到代码头部，而let命令是不提升的，所以导致Bar继承Foo的时候，Foo还没有定义。</p>
 </p>
 
 <p>
@@ -230,21 +172,7 @@ class Foo{}
 <strong>this的指向</strong>
 类的方法内部如果含有this，它默认指向类的实例。但是，必须非常小心，一旦单独使用该方法，很可能报错。
 
-<script>
-class Logger {
-  printName(name = 'there') {
-    this.print(`Hello ${name}`);
-  }
-
-  print(text) {
-    console.log(text);
-  }
-}
-
-const logger = new Logger();
-const { printName } = logger;
-printName(); // TypeError: Cannot read property 'print' of undefined
-</script>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">printName</span>(<span class="params">name = <span class="string">&#x27;there&#x27;</span></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.print(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">print</span>(<span class="params">text</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = <span class="keyword">new</span> Logger();</span><br><span class="line"><span class="keyword">const</span> &#123; printName &#125; = logger;</span><br><span class="line">printName(); <span class="comment">// TypeError: Cannot read property &#x27;print&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
 <p>上面代码中，printName方法中的this，默认指向Logger类的实例。但是，如果将这个方法提取出来单独使用，this会指向该方法运行时所在的环境（由于 class 内部是严格模式，所以 this 实际指向的是undefined），从而导致找不到print方法而报错。</p>
 <p>一个比较简单的解决方法是，在构造方法中绑定this，这样就不会找不到print方法了。</p>
 <p>另一种解决方法是使用箭头函数。</p>
@@ -270,27 +198,10 @@ printName(); // TypeError: Cannot read property 'print' of undefined
 <strong>静态属性</strong>
 静态属性指的是 Class 本身的属性，即Class.propName，而不是定义在实例对象（this）上的属性。
 
-<script>
-class Foo {
-}
-
-Foo.prop = 1;
-Foo.prop // 1
-<script>
-上面的写法为Foo类定义了一个静态属性prop。
-
-目前，只有这种写法可行，因为 ES6 明确规定，Class 内部只有静态方法，没有静态属性。现在有一个提案提供了类的静态属性，写法是在实例属性的前面，加上static关键字。
-
-<script>
-class MyClass {
-  static myStaticProp = 42;
-
-  constructor() {
-    console.log(MyClass.myStaticProp); 
-  }
-}
-</script>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.prop = <span class="number">1</span>;</span><br><span class="line">Foo.prop <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>上面的写法为Foo类定义了一个静态属性prop。</p>
+<p>目前，只有这种写法可行，因为 ES6 明确规定，Class 内部只有静态方法，没有静态属性。现在有一个提案提供了类的静态属性，写法是在实例属性的前面，加上static关键字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> myStaticProp = <span class="number">42</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(MyClass.myStaticProp); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个新写法大大方便了静态属性的表达。</p>
 </p>
 
@@ -305,18 +216,9 @@ class MyClass {
 <p>
 <strong>私有属性的提案</strong>
 目前，有一个提案，为class加了私有属性。方法是在属性名之前，使用#表示。
-<script>
-class IncreasingCounter {
-  #count = 0;
-  get value() {
-    console.log('Getting the current value!');
-    return this.#count;
-  }
-  increment() {
-    this.#count++;
-  }
-}
-上面代码中，#count就是私有属性，只能在类的内部使用（this.#count）。如果在类的外部使用，就会报错。
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IncreasingCounter</span> </span>&#123;</span><br><span class="line">  #count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">get</span> <span class="title">value</span>() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Getting the current value!&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.#count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.#count++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，#count就是私有属性，只能在类的内部使用（this.#count）。如果在类的外部使用，就会报错。</p>
 </p>
 
 <p>
