@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    hooks总结 |  Hexo
+    Class |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-hooks总结"
+  id="post-Class基本语法"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  hooks总结
+  Class
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/26/hooks%E6%80%BB%E7%BB%93/" class="article-date">
-  <time datetime="2020-12-26T00:48:03.000Z" itemprop="datePublished">2020-12-26</time>
+      <a href="/2020/12/28/Class%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
+  <time datetime="2020-12-28T06:51:46.000Z" itemprop="datePublished">2020-12-28</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">790</span>
+            <span class="post-count">2.2k</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">8 min</span>
         </span>
     </span>
 </div>
@@ -94,28 +94,237 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1>什么是 React Hooks</h1>
-React Hooks 是 React 16.7.0-alpha 版本推出的新特性，想尝试的同学安装此版本即可。
-React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。
-这个状态指的是状态逻辑，所以称为状态逻辑复用会更恰当，因为只共享数据处理逻辑，不会共享数据本身。
+  <h1>class基本语法</h1>
 
-<h3 id="简单的有状态组件"><a href="#简单的有状态组件" class="headerlink" title="简单的有状态组件"></a>简单的有状态组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;You clicked &#123;<span class="built_in">this</span>.state.count&#125; times&lt;/p&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="function">() =&gt;</span> <span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span> &#125;)&#125;&gt;</span><br><span class="line">          Click me</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用hooks后的版本"><a href="#使用hooks后的版本" class="headerlink" title="使用hooks后的版本"></a>使用hooks后的版本</h3><p>import { useState } from ‘react’;</p>
-<p>function Example() {<br>  const [count, setCount] = useState(0);<br>  return (<br>    <div><br>      <p>You clicked {count} times</p><br>      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;<br>        Click me<br>      </button><br>    </div><br>  );<br>}</p>
-<h1>HOOK是什么</h1>
-这是一个比class更直观的新写法，在这个写法中react组件都是纯函数，没有生命周期函数，但可以像class一样拥有state，可以由effect触发生命周期更新，提供一种新的思路来写react。（虽然官方再三声明我们绝对没有要拿掉class的意思，但hook未来的目标是覆盖所有class的应用场景）
+<p>类的由来<p>
+
+<script>
+ES5写法：
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.toString = function () {
+  return '(' + this.x + ', ' + this.y + ')';
+};
+
+var p = new Point(1, 2);
+</script>
+
+<p>ES6提供了更接近传统语言的写法，引入了class类这个概念，作为对象的模板，通过class关键字，可以定义类；基本上，ES6的class可以看作只是一个语法糖，他的绝大部分功能，ES5都可以做到，新的class写法只是让对象圆形写法更加清晰、更像面向对象编程的语法而已。<br>用ES6的class改写：</p>
+<script>
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
+}
+
+案例中，定义一个类，可以看到有一个constructor（）方法，这就是构造方法，而this关键字就代表实例对象，与上面ES5的构造函数point是一致的；point类除了构造方法，还定义了一个toString（）方法，<b>定义toString（）方法是，前面不用加function这个关键字，直接把函数定义放进去就可以了，另外，方法与方法之间不需要逗号分隔，加了会报错；<b>
+</script>
+<p>ES6的类，完全可以看作构造函数的另一种写法；
+类的数据类型就是函数，类本身就指向构造函数
+使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致
+构造函数的prototype属性，在ES6的类上面继续存在，事实上，类的所有方法都定义在类的prototype属性上面
+在类的实例上面调用方法，其实就是调用原型上的方法
+由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面；Object.assign()方法可以很方便地一次向类添加多个方法
+prototype对象的constructor（）属性，直接指向类的本身 ，这与ES5的行为是一致的
+**类的内部所有定义方法，都是不可枚举的**
+tostring（）方法是point类内部定义的方法，它是不可枚举的，这点与ES5的行为不一致
+tostring（）方法就是可枚举的
+</p>
+
+<h2>constructor方法</h2>
+<p>
+constructor()方法是类默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor()方法，如果没有显式定义，一个空的constructor()方法会被默认添加。
+</p>
+
+<h2>类的实例</h2>
+<p>
+生成类的实例的写法，与ES5完全一样，也是使用new命令，如果忘记加上new，像函数那样调用class，将会报错；
+
+<script>
+class Point{
+
+}
+var point=new Point(2,3)//正确
+
+var point=Point(2,3)//错误
+
+</p>
+
+<h2>取值函数（getter）和存值函数（setter）</h2>
+<p>
+与 ES5 一样，在“类”的内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+</p>
+
+<h2>属性表达式</h2>
+
+<p>
+类的属性名，可以采用表达式
+</p>
+
+<h2>Class表达式</h2>
+<p>
+与函数一样，类也可以使用表达式的形式定义
+
+<script>
+const MyClass = class Me {
+  getClassName() {
+    return Me.name;
+  }
+};
+这段代码使用表达式定义了一个类，需要注意的是，这个类的名字是Me，但是Me只在class的内不可用，指当前的类，在class外部，这个类只能用MyClass引用
 
 
+采用Class表达式，可以写出立即执行的Class
 
-<p>基本的Hook的API有三个</p>
-<p>useState(相当于state)<br>useEffect(相当于componentDidUpdate, componentDidMount, componentWillUnmount)<br>useContext(相当于Context api)</p>
-<p>useState(initialState)也是一个函数，定义了一个state，初始值为initialState，返回值是一个数组</p>
-<p>useEffect<br>这个api可以让你在函数组件中使用副作用(use side effects)，常见的会产生副作用的方式有获取数据，更新dom，绑定事件监听等，render只负责渲染，一般会等到dom加载好之后再去调用这些副作用方法。</p>
-<p>Context用于在组件之间传递数据。useContext接受一个context对象(React.createContext生成)，返回context.Consumer中获得的值。</p>
-<p><strong>为什么要用HOOK</strong></p>
-<p>想要复用一个有状态的组件太麻烦了！<br>我们都知道react都核心思想就是，将一个页面拆成一堆独立的，可复用的组件，并且用自上而下的单向数据流的形式将这些组件串联起来。但假如你在大型的工作项目中用react，你会发现你的项目中实际上很多react组件冗长且难以复用。尤其是那些写成class的组件，它们本身包含了状态（state），所以复用这类组件就变得很麻烦。</p>
-<p>那之前，官方推荐怎么解决这个问题呢？答案是：渲染属性（Render Props）和高阶组件（Higher-Order Components）。我们可以稍微跑下题简单看一下这两种模式。</p>
-<p>渲染属性指的是使用一个值为函数的prop来传递需要动态渲染的nodes或组件。如下面的代码可以看到我们的DataProvider组件包含了所有跟状态相关的代码，而Cat组件则可以是一个单纯的展示型组件，这样一来DataProvider就可以单独复用了。</p>
+<script>
+let person = new class {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayName() {
+    console.log(this.name);
+  }
+}('张三');
+
+person.sayName();
+person是一个立即执行的类的实例。
+</p>
+
+
+<h1>需要注意点</h1>
+<p>
+<strong>严格模式</strong>
+类和模块的内部，默认就是严格模式，所以不需要使用use strict指定运行模式，只要代码写在类或模块之中，就只有严格模式可用，考虑到未来所有的代码，其实都是运行在模块之中，所以在ES6实际上把整个语言升级到了严格模式
+</p>
+
+<p color="orange">
+<strong>不存在提升</strong>
+类不存在变量提升，这一点与ES5完全不同
+new Foo()
+class Foo{}
+此段代码，Fo类使用前，定义在后，这样会报错，因为ES6不会把类的生命提升到代码头部。这种规定的原因与下文要提到继承有关，必须保证子类在父类之后定义；
+{
+  let Foo=class{}
+  class Bar extends Foo{
+
+  }
+}
+上面的代码不会报错，因为Bar继承Foo的时候，Foo已经有定义了。但是，如果存在class的提升，上面代码就会报错，因为class会被提升到代码头部，而let命令是不提升的，所以导致Bar继承Foo的时候，Foo还没有定义。
+</p>
+
+<p>
+<stronge>name属性</stronge>
+由于本质上，ES6的类与ES5的构造函数的一层包装，所以函数的许多特性都被class继承，包括name属性；name属性总是返回紧跟在class关键字后面的类名
+</p>
+
+<p>
+<strong>this的指向</strong>
+类的方法内部如果含有this，它默认指向类的实例。但是，必须非常小心，一旦单独使用该方法，很可能报错。
+
+<script>
+class Logger {
+  printName(name = 'there') {
+    this.print(`Hello ${name}`);
+  }
+
+  print(text) {
+    console.log(text);
+  }
+}
+
+const logger = new Logger();
+const { printName } = logger;
+printName(); // TypeError: Cannot read property 'print' of undefined
+</script>
+<p>上面代码中，printName方法中的this，默认指向Logger类的实例。但是，如果将这个方法提取出来单独使用，this会指向该方法运行时所在的环境（由于 class 内部是严格模式，所以 this 实际指向的是undefined），从而导致找不到print方法而报错。</p>
+<p>一个比较简单的解决方法是，在构造方法中绑定this，这样就不会找不到print方法了。</p>
+<p>另一种解决方法是使用箭头函数。</p>
+<p>class Obj {<br>  constructor() {<br>    this.getThis = () =&gt; this;<br>  }<br>}</p>
+<p>const myObj = new Obj();<br>myObj.getThis() === myObj // true<br>箭头函数内部的this总是指向定义时所在的对象。上面代码中，箭头函数位于构造函数内部，它的定义生效的时候，是在构造函数执行的时候。这时，箭头函数所在的运行环境，肯定是实例对象，所以this会总是指向实例对象。</p>
+<p>还有一种解决方法是使用Proxy，获取方法的时候，自动绑定this。</p>
+</p>
+
+<p>
+<strong>静态方法</strong>
+类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
+静态方法也还可以从super对象上调用的
+</p>
+
+<p>
+<strong>实例属性新写法</strong>
+实例属性除了定义在constructor（）方法里面的this上面，也可以定义在类的最顶层；
+所有实例对象自身的属性都定义在类的头部，看上去比较整齐，一眼就能看出这个类有哪些实例属性。
+</p>
+
+
+<p>
+<strong>静态属性</strong>
+静态属性指的是 Class 本身的属性，即Class.propName，而不是定义在实例对象（this）上的属性。
+
+<script>
+class Foo {
+}
+
+Foo.prop = 1;
+Foo.prop // 1
+<script>
+上面的写法为Foo类定义了一个静态属性prop。
+
+目前，只有这种写法可行，因为 ES6 明确规定，Class 内部只有静态方法，没有静态属性。现在有一个提案提供了类的静态属性，写法是在实例属性的前面，加上static关键字。
+
+<script>
+class MyClass {
+  static myStaticProp = 42;
+
+  constructor() {
+    console.log(MyClass.myStaticProp); 
+  }
+}
+</script>
+
+<p>这个新写法大大方便了静态属性的表达。</p>
+</p>
+
+<p>
+<strong私>有方法和私有属性</strong>
+现有的解决方案
+私有方法和私有属性，是只能在类的内部访问的方法和属性，外部不能访问。这是常见需求，有利于代码的封装，但 ES6 不提供，只能通过变通方法模拟实现。
+
+<p>一种做法是在命名上加以区别。<br>另一种方法就是索性将私有方法移出类，因为类内部的所有方法都是对外可见的。<br>还有一种方法是利用Symbol值的唯一性，将私有方法的名字命名为一个Symbol值。</p>
+</p>
+
+<p>
+<strong>私有属性的提案</strong>
+目前，有一个提案，为class加了私有属性。方法是在属性名之前，使用#表示。
+<script>
+class IncreasingCounter {
+  #count = 0;
+  get value() {
+    console.log('Getting the current value!');
+    return this.#count;
+  }
+  increment() {
+    this.#count++;
+  }
+}
+上面代码中，#count就是私有属性，只能在类的内部使用（this.#count）。如果在类的外部使用，就会报错。
+</p>
+
+<p>
+<strong>new.target属性</strong>
+new是从构造函数生成实例对象的命令。ES6 为new命令引入了一个new.target属性，该属性一般用在构造函数之中，返回new命令作用域的那个构造函数。如果构造函数不是通过new命令或Reflect.construct()调用的，new.target会返回undefined，因此这个属性可以用来确定构造函数是怎么调用的。
+
+<p>注意：<br>子类继承父类时，new.target会返回子类；<br>在函数外部，使用new.target会报错。</p>
+</p>
  
       <!-- reward -->
       
@@ -186,7 +395,7 @@ React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-o
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/26/hooks%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/28/Class%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -197,19 +406,19 @@ React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-o
    
   <nav class="article-nav">
     
-      <a href="/2020/12/28/Class%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-nav-link">
+      <a href="/2020/12/28/Class%E7%BB%A7%E6%89%BF/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Class
+            Class继承
           
         </div>
       </a>
     
     
-      <a href="/2020/12/25/vue%E6%80%BB%E7%BB%93/" class="article-nav-link">
+      <a href="/2020/12/26/hooks%E6%80%BB%E7%BB%93/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">vue总结</div>
+        <div class="article-nav-title">hooks总结</div>
       </a>
     
   </nav>
