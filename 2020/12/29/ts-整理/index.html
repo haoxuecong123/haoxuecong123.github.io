@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    箭头函数与普通函数区别 |  Hexo
+    ts-基础类型整理 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-箭头函数与普通函数区别"
+  id="post-ts-整理"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  箭头函数与普通函数区别
+  ts-基础类型整理
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/29/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time datetime="2020-12-29T01:34:50.000Z" itemprop="datePublished">2020-12-29</time>
+      <a href="/2020/12/29/ts-%E6%95%B4%E7%90%86/" class="article-date">
+  <time datetime="2020-12-29T11:31:04.000Z" itemprop="datePublished">2020-12-29</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">622</span>
+            <span class="post-count">853</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -94,29 +94,29 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="箭头函数与普通函数的区别"><a href="#箭头函数与普通函数的区别" class="headerlink" title="箭头函数与普通函数的区别"></a>箭头函数与普通函数的区别</h1><h4 id="外形不同："><a href="#外形不同：" class="headerlink" title="外形不同："></a>外形不同：</h4><p>箭头函数使用箭头定义，普通函数中没有<br>箭头函数的定义要比普通函数定义简洁、清晰得多、很快捷</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">console</span>.log(a.prototype)<span class="comment">//&#123;constructor:f&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//箭头函数</span></span><br><span class="line"><span class="keyword">let</span> func=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">console</span>.log(a.prototype)<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="箭头函数的参数"><a href="#箭头函数的参数" class="headerlink" title="箭头函数的参数"></a>箭头函数的参数</h4><ol>
-<li>如果箭头函数没有参数，直接写一个空括号就行</li>
-<li>如果箭头函数的参数只有一个，也可以省去包裹参数的括号</li>
-<li>如果箭头函数有多个参数，将参数依次用逗号分隔，包裹在括号中就行</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有参数</span></span><br><span class="line"><span class="keyword">let</span> fun1=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;aaa&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//参数只有一个</span></span><br><span class="line"><span class="keyword">let</span> fun2= <span class="function"><span class="params">name</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hello $&#123;name&#125; !&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有多个参数</span></span><br><span class="line"><span class="keyword">let</span> fun3=<span class="function">(<span class="params">val1,val2,val3</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [val1,val2,val3]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="箭头函数的函数体"><a href="#箭头函数的函数体" class="headerlink" title="箭头函数的函数体"></a>箭头函数的函数体</h4><ol>
-<li>如果箭头函数的函数体只有一句代码，就是简单返回某个变量或者返回一个简单的JS表达式，可以省去函数体的大括号</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fun =<span class="function"><span class="params">val</span> =&gt;</span> val</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">let</span> fun =<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>如果箭头函数只有一句代码，就返回一个对象<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要用小括号包裹要返回的对象，否则会报错</span></span><br><span class="line"><span class="keyword">let</span> temp =<span class="function"><span class="params">id</span> =&gt;</span>(&#123;<span class="attr">id</span>:id,<span class="attr">name</span>:<span class="string">&quot;Temp&quot;</span>&#125;)</span><br></pre></td></tr></table></figure></li>
-<li>如果箭头函数的函数体只有一条语句并且不需要返回值，可以给这条语句前面加一个void关键字<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fun =<span class="function">()=&gt;</span><span class="keyword">void</span> doseNotReturn()</span><br></pre></td></tr></table></figure>
-</li>
+  <h1 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h1><ol>
+<li>let和const是JS里相对较新的变量声明方式，let在很多方面与var是相似的，但是可以避免在JS里遇见一些常见问题，const是对let的一个增强，他能组织对一个变量再次赋值</li>
+<li>因为ts是JS的超集，所以它本身就支持let和const</li>
 </ol>
 <hr>
-<h4 id="箭头函数不会创建自己的this"><a href="#箭头函数不会创建自己的this" class="headerlink" title="箭头函数不会创建自己的this"></a>箭头函数不会创建自己的this</h4><p>箭头函数没有自己的this，箭头函数的this指向在定义的时候继承自外层第一个普通函数的this；所以，箭头函数this的指向在它被定义的时候就已经确定了，之后永远不会改变</p>
-<h4 id="箭头函数不能作为构造函数使用"><a href="#箭头函数不能作为构造函数使用" class="headerlink" title="箭头函数不能作为构造函数使用"></a>箭头函数不能作为构造函数使用</h4><p>因为箭头函数没有自己的this，它的this其实继承了外层执行环境中的this，且this指向永远不会因为在哪里调用或者被谁调用而改变，所以箭头函数不能作为构造函数使用，或者说构造函数不能定义成箭头函数，否则用new调用时会报错</p>
-<h4 id="箭头函数不绑定auguments，可以用rest参数…代替auguments对象，来访问箭头函数的参数列表"><a href="#箭头函数不绑定auguments，可以用rest参数…代替auguments对象，来访问箭头函数的参数列表" class="headerlink" title="箭头函数不绑定auguments，可以用rest参数…代替auguments对象，来访问箭头函数的参数列表"></a>箭头函数不绑定auguments，可以用rest参数…代替auguments对象，来访问箭头函数的参数列表</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> A =<span class="function">(<span class="params">...a</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(c)</span><br><span class="line">&#125;</span><br><span class="line">c(<span class="number">3</span>,<span class="number">82</span>)<span class="comment">//[3,82]</span></span><br></pre></td></tr></table></figure> 
+<h4 id="var声明"><a href="#var声明" class="headerlink" title="var声明"></a>var声明</h4><p>可以再函数内部定义变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message=<span class="string">&quot;Hello world&quot;</span></span><br><span class="line">    <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### let声明</span></span><br><span class="line"><span class="string">现在已经知道var存在一些问题，这恰好说明了为什么用let语句来声明变量。 除了名字不同外， let与var的写法一致。</span></span><br><span class="line"><span class="string">*块级作用域*</span></span><br><span class="line"><span class="string">当用let声明一个变量，它使用的是词法作用域或块作用域。 不同于使用 var声明的变量那样可以在包含它们的函数外访问，块作用域变量在包含它们的块或for循环之外是不能访问的。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">input: boolean</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (input) &#123;</span><br><span class="line">        <span class="keyword">let</span> b = a + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们定义了2个变量a和b。 a的作用域是f函数体内，而b的作用域是if语句块里。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数的介绍：函数是JavaScript应用程序的基础。 它帮助你实现抽象层，模拟类，信息隐藏和模块。 在TypeScript里，虽然已经支持类，命名空间和模块，但函数仍然是主要的定义 行为的地方。 TypeScript为JavaScript函数添加了额外的功能，让我们可以更容易地使用。和JavaScript一样，TypeScript函数可以创建有名字的函数和匿名函数。 可以随意选择适合应用程序的方式，不论是定义一系列API函数还是只使用一次的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"><span class="comment">//在JavaScript里，函数可以使用函数体外部的变量</span></span><br></pre></td></tr></table></figure>
+<p><em>函数的定义</em><br>为上面代码添加类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"><span class="comment">//可以给每个参数添加类型之后再为函数本身添加返回值类型。 TypeScript能够根据返回语句自动推断出返回值类型，因此我们通常省略它。</span></span><br></pre></td></tr></table></figure>
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p><em>介绍</em><br>JSX是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因React框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。</p>
+<p><em>基本用法</em><br>使用JSX必须做两件事：</p>
+<ol>
+<li>给文件一个.tsx扩展名</li>
+<li>启用jsx选项<br>TS具有三种JSX模式：preserve，react和react-native</li>
+</ol>
+<p><em>这些模式只在代码生成阶段起作用 - 类型检查并不受影响。</em></p>
+<p><em>as操作符</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &lt;foo&gt;bar;</span><br></pre></td></tr></table></figure>
+<p>这里断言bar变量是foo类型的。 因为TypeScript也使用尖括号来表示类型断言，在结合JSX的语法后将带来解析上的困难。因此，TypeScript在.tsx文件里禁用了使用尖括号的类型断言。<br>由于不能够在.tsx文件里使用上述语法，应该使用另一个类型断言操作符：as,用as写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = bar <span class="keyword">as</span> foo;</span><br><span class="line"><span class="comment">//as操作符在.ts和.tsx里都可用，并且与尖括号类型断言行为是等价的。</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -186,7 +186,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/29/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/29/ts-%E6%95%B4%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -197,19 +197,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/12/29/ts-%E6%95%B4%E7%90%86/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            ts-基础类型整理
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/12/28/Class%E7%BB%A7%E6%89%BF/" class="article-nav-link">
+      <a href="/2020/12/29/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%8C%BA%E5%88%AB/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Class继承</div>
+        <div class="article-nav-title">箭头函数与普通函数区别</div>
       </a>
     
   </nav>
