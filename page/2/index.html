@@ -144,6 +144,74 @@
     
     
     <article
+  id="post-hooks总结"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/26/hooks%E6%80%BB%E7%BB%93/"
+    >hooks总结</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/12/26/hooks%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-12-26T00:48:03.000Z" itemprop="datePublished">2020-12-26</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>什么是 React Hooks</h1>
+React Hooks 是 React 16.7.0-alpha 版本推出的新特性，想尝试的同学安装此版本即可。
+React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。
+这个状态指的是状态逻辑，所以称为状态逻辑复用会更恰当，因为只共享数据处理逻辑，不会共享数据本身。
+
+<h3 id="简单的有状态组件"><a href="#简单的有状态组件" class="headerlink" title="简单的有状态组件"></a>简单的有状态组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;You clicked &#123;<span class="built_in">this</span>.state.count&#125; times&lt;/p&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="function">() =&gt;</span> <span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span> &#125;)&#125;&gt;</span><br><span class="line">          Click me</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用hooks后的版本"><a href="#使用hooks后的版本" class="headerlink" title="使用hooks后的版本"></a>使用hooks后的版本</h3><p>import { useState } from ‘react’;</p>
+<p>function Example() {<br>  const [count, setCount] = useState(0);<br>  return (<br>    <div><br>      <p>You clicked {count} times</p><br>      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;<br>        Click me<br>      </button><br>    </div><br>  );<br>}</p>
+<h1>HOOK是什么</h1>
+这是一个比class更直观的新写法，在这个写法中react组件都是纯函数，没有生命周期函数，但可以像class一样拥有state，可以由effect触发生命周期更新，提供一种新的思路来写react。（虽然官方再三声明我们绝对没有要拿掉class的意思，但hook未来的目标是覆盖所有class的应用场景）
+
+
+
+<p>基本的Hook的API有三个</p>
+<p>useState(相当于state)<br>useEffect(相当于componentDidUpdate, componentDidMount, componentWillUnmount)<br>useContext(相当于Context api)</p>
+<p>useState(initialState)也是一个函数，定义了一个state，初始值为initialState，返回值是一个数组</p>
+<p>useEffect<br>这个api可以让你在函数组件中使用副作用(use side effects)，常见的会产生副作用的方式有获取数据，更新dom，绑定事件监听等，render只负责渲染，一般会等到dom加载好之后再去调用这些副作用方法。</p>
+<p>Context用于在组件之间传递数据。useContext接受一个context对象(React.createContext生成)，返回context.Consumer中获得的值。</p>
+<p><strong>为什么要用HOOK</strong></p>
+<p>想要复用一个有状态的组件太麻烦了！<br>我们都知道react都核心思想就是，将一个页面拆成一堆独立的，可复用的组件，并且用自上而下的单向数据流的形式将这些组件串联起来。但假如你在大型的工作项目中用react，你会发现你的项目中实际上很多react组件冗长且难以复用。尤其是那些写成class的组件，它们本身包含了状态（state），所以复用这类组件就变得很麻烦。</p>
+<p>那之前，官方推荐怎么解决这个问题呢？答案是：渲染属性（Render Props）和高阶组件（Higher-Order Components）。我们可以稍微跑下题简单看一下这两种模式。</p>
+<p>渲染属性指的是使用一个值为函数的prop来传递需要动态渲染的nodes或组件。如下面的代码可以看到我们的DataProvider组件包含了所有跟状态相关的代码，而Cat组件则可以是一个单纯的展示型组件，这样一来DataProvider就可以单独复用了。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-vue总结"
   class="article article-type-post"
   itemscope
