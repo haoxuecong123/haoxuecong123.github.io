@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Promise |  Hexo
+    深浅拷贝 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Promise"
+  id="post-深浅拷贝"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Promise
+  深浅拷贝
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/01/15/Promise/" class="article-date">
-  <time datetime="2021-01-15T11:23:56.000Z" itemprop="datePublished">2021-01-15</time>
+      <a href="/2021/01/18/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
+  <time datetime="2021-01-18T10:03:55.000Z" itemprop="datePublished">2021-01-18</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">115</span>
+            <span class="post-count">574</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -92,15 +92,47 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><em>Promise含义与作用</em></p>
+  <p><em>拷贝有个大前提，是针对对象的操作，当想复制一个对象的时候，才存在浅拷贝深拷贝之分！！</em></p>
+<p>浅拷贝的实现方式</p>
 <ol>
-<li>Promise是异步的容器，本身是同步，里面可以写异步的</li>
-<li>Promise主要解决异步问题：定时器，网络请求，数据库</li>
-<li>Promise有两个参数，resolve:解析  reject:失败</li>
+<li><p>Object.assign()<br>可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</p>
+</li>
+<li><p>lodash的clone方法</p>
+</li>
+<li><p>…操作符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">name</span>: <span class="string">&#x27;Kobe&#x27;</span>, <span class="attr">address</span>:&#123;<span class="attr">x</span>:<span class="number">100</span>,<span class="attr">y</span>:<span class="number">100</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2= &#123;... obj1&#125;</span><br><span class="line"></span><br><span class="line">obj1.address.x = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">obj1.name = <span class="string">&#x27;wade&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;obj2&#x27;</span>,obj2)</span><br></pre></td></tr></table></figure></li>
+<li><p>Array.prototype.concat</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr3 = arr.concat(arr2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, &#123; <span class="attr">username</span>: <span class="string">&#x27;kobe&#x27;</span> &#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr2 = arr.concat();</span><br><span class="line"></span><br><span class="line">arr2[<span class="number">2</span>].username = <span class="string">&#x27;wade&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure></li>
+<li><p>Array.prototype.slice</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, &#123;</span><br><span class="line"></span><br><span class="line">username: <span class="string">&#x27; kobe&#x27;</span></span><br><span class="line">     </span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr3 = arr.slice();</span><br><span class="line"></span><br><span class="line">arr3[<span class="number">2</span>].username = <span class="string">&#x27;wade&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><em>手写Promise</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">         resolve(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line">     &#125;, <span class="number">0</span>)</span><br><span class="line"> &#125;).then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(data)</span><br><span class="line"> &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;失败了&#x27;</span>)</span><br><span class="line"> &#125;)</span><br><span class="line"> <span class="comment">//分析：成功then函数执行，失败catch函数执行</span></span><br></pre></td></tr></table></figure>
-
+<p><em>深拷贝的实现方式</em></p>
+<ol>
+<li>JSON.parse(JSON.stringify())</li>
+</ol>
+<p>可以处理数组和对象的深拷贝，但是不能处理函数和正则，因为这两者基于这两个函数处理后得到的结果不再是正则/函数</p>
+<p>缺点：</p>
+<p>会忽略undefined</p>
+<p>会忽略symbol<br>不能序列化函数<br>不能解决循环引用的对象</p>
+<ol start="2">
+<li><p>lodash的cloneDeep函数</p>
+</li>
+<li><p>jQuery.extend函数</p>
+</li>
+<li><p>如果所拷贝的对象含有内置对象，但是不包含函数，可以使用messagechannel，可以拷贝undefined和循环引用的对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">structuralClone</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; port1, port2 &#125; = <span class="keyword">new</span> MessageChannel()</span><br><span class="line">      </span><br><span class="line">port2.onmessage = <span class="function"><span class="params">ev</span> =&gt;</span> resolve(ev.data)</span><br><span class="line">      </span><br><span class="line">port1.postMessage(obj)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: &#123; <span class="attr">c</span>: <span class="number">2</span> &#125; &#125;</span><br><span class="line"></span><br><span class="line">obj.b.d = obj.b</span><br></pre></td></tr></table></figure>
+<p>注意该方法是异步的 可以处理 undefined 和循环引用对象 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> clone = <span class="keyword">await</span> structuralClone(obj)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(clone)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<p>手写浅拷贝：遍历=&gt;直接等号赋值</p>
+</li>
+</ol>
+<p>浅拷贝 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123; <span class="attr">name</span> : <span class="string">&#x27;深深地&#x27;</span>, <span class="attr">arr</span> : [<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>],<span class="number">4</span>], &#125;;</span><br><span class="line"> <span class="keyword">let</span> obj3=shallowClone(obj1)</span><br><span class="line">obj3.name = <span class="string">&quot;春娇&quot;</span>; obj3.arr[<span class="number">1</span>] = [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>] ;</span><br></pre></td></tr></table></figure>
+<p> 新旧对象还是共享同一块内存</p>
+<p>这是个浅拷贝的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">shallowClone</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> target = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> source) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (source.hasOwnProperty(i)) &#123;</span><br><span class="line">    </span><br><span class="line">        target[i] = source[i];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> target;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;obj1&#x27;</span>,obj1)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;obj3&#x27;</span>,obj3)</span><br></pre></td></tr></table></figure>
+<p>obj.hasOwnProperty，返回值是一个布尔值，即是否是obj的属性（原型上的是false)</p>
+<p>深拷贝 遍历，如果是简单数据类型直接赋值，如果是复杂数据类型递归。</p>
  
       <!-- reward -->
       
@@ -171,7 +203,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/15/Promise/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/18/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -182,19 +214,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/18/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            深浅拷贝
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/01/14/HTTPS%E5%8D%8F%E8%AE%AE/" class="article-nav-link">
+      <a href="/2021/01/15/Promise/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">HTTPS协议</div>
+        <div class="article-nav-title">Promise</div>
       </a>
     
   </nav>
