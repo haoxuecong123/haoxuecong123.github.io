@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    闭包 |  Hexo
+    proxy |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-闭包"
+  id="post-proxy"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  闭包
+  proxy
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/01/19/%E9%97%AD%E5%8C%85/" class="article-date">
-  <time datetime="2021-01-19T10:59:06.000Z" itemprop="datePublished">2021-01-19</time>
+      <a href="/2021/01/25/proxy/" class="article-date">
+  <time datetime="2021-01-25T11:31:14.000Z" itemprop="datePublished">2021-01-25</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">433</span>
+            <span class="post-count">763</span>
         </span>
     </span>
 
@@ -79,50 +79,26 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="浅谈闭包"><a href="#浅谈闭包" class="headerlink" title="浅谈闭包"></a>浅谈闭包</h1><p><em>闭包的含义</em></p>
-<ol>
-<li>闭包就是能够读取其他函数内部变量的函数</li>
-<li>例如在javascript中，只有函数内部的子函数才能读取局部变量，所以闭包可以理解成”定义在一个函数内部的函数”。</li>
-<li>在本质上，闭包是将函数内部和函数外部连接起来的桥梁</li>
-</ol>
-<p><em>为什么使用闭包</em></p>
-<ol>
-<li>全局变量：可以重复使用，但是会造成全局污染而且容易篡改</li>
-<li>局部变量：仅函数内使用不会造成全局污染也不会被篡改，不能重复使用</li>
-<li>所以，全局变量和局部变量的优缺点刚好相对，闭包的出现正好结合了全局变量和局部变量的优点</li>
-</ol>
-<p><em>何时使用闭包</em></p>
-<ol>
-<li>重用对象，但是又保护对象不被污染篡改时使用</li>
-</ol>
-<p><em>闭包的表现形式</em><br>返回一个函数：在JS中非常常见</p>
-<p>作为函数参数传递：无论通过什么方法将内部函数传递到它所在作用域外，无论在何处执行这个函数，都会产生闭包</p>
-<p>回调函数：在定时器、事件监听、ajax请求等等或任何异步中，只要使用了回调函数，实际上就是在使用闭包</p>
-<p><em>闭包举例</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;aaa&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> C = A();</span><br><span class="line">C();<span class="comment">// aaa</span></span><br></pre></td></tr></table></figure>
-<p><em>分析</em></p>
-<ol>
-<li>定义普通函数 A</li>
-<li>在 A 中定义普通函数 B</li>
-<li>在 A 中返回 B</li>
-<li>执行 A，并把 A 的返回结果赋值给变量C</li>
-<li>执行 C<br>当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。</li>
-</ol>
+  <p>Proxy<br><em>Proxy 是一种构造器，所以是通过new关键字实现的，从功能上讲，也是一种拦截器，在设置对象属性或者读取对象属性时做一层拦截操作。</em><br><em>Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">语法：<span class="keyword">let</span> p = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler)</span><br><span class="line">target：用<span class="built_in">Proxy</span>包装的目标对象（可以是任何类型的对象，包括原生数组、函数、甚至另一个代理）</span><br><span class="line">handler ：一个对象，用来定制拦截行为</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;wxp&#x27;</span>&#125;,&#123;</span><br><span class="line">	<span class="function"><span class="title">get</span>(<span class="params">target,key,value,proxy</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">2</span>)&#125;,</span><br><span class="line">	<span class="function"><span class="title">set</span>(<span class="params">target,key,value,proxy</span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>)&#125;</span><br><span class="line">&#125;);</span><br><span class="line">obj.name = <span class="number">1</span>;<span class="comment">//当设置对象属性值，打印3</span></span><br><span class="line">obj.name;<span class="comment">//当获取对象，打印2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line">对 set 做拦截，比如规定设置属性值时必须符合某个要求：</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置属性 point 必须是小于0的数字。</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;,&#123;</span><br><span class="line"><span class="function"><span class="title">get</span>(<span class="params">target,key,value,proxy</span>)</span>&#123;&#125;,</span><br><span class="line"><span class="function"><span class="title">set</span>(<span class="params">target,key,value,proxy</span>)</span>&#123;<span class="keyword">if</span>(value&lt;<span class="number">0</span>)&#123;<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;The value seems invalid&#x27;</span>);&#125;&#125;</span><br><span class="line">&#125;);</span><br><span class="line">obj.point = -<span class="number">1</span>;<span class="comment">//报错</span></span><br><span class="line">对 get 做拦截，比如没有某个属性的时候报错：</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有 point 属性的时候报错。</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;<span class="attr">point</span>: <span class="number">2</span>&#125;, &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params">target, key, value, proxy</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> pro <span class="keyword">in</span> target) &#123;</span><br><span class="line">        <span class="keyword">if</span> (target[pro]) &#123;</span><br><span class="line">          <span class="keyword">return</span> target[pro]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;The value seems invalid&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;&#125;,</span><br><span class="line">  <span class="function"><span class="title">set</span>(<span class="params">target, key, value, proxy</span>)</span>&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">;</span><br><span class="line">obj.age <span class="comment">//报错，没有age这个属性</span></span><br></pre></td></tr></table></figure>
+<p>Proxy 支持的拦截操作：</p>
+<p>*get(target, propKey, receiver)*：拦截对象属性的读取，比如proxy.foo和proxy[‘foo’]。<br>*set(target, propKey, value, receiver)*：拦截对象属性的设置，比如proxy.foo =v或proxy[‘foo’] = v，返回一个布尔值。<br>*has(target, propKey)*：拦截propKey in proxy的操作，返回一个布尔值。<br>*deleteProperty(target, propKey)*：拦截delete proxy[propKey]的操作，返回一个布尔值。<br>*ownKeys(target)*：拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)、for…in循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而Object.keys()的返回结果仅包括目标对象自身的可遍历属性。<br>*getOwnPropertyDescriptor(target, propKey)*：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。<br>*defineProperty(target, propKey,propDesc)*：拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。<br>*preventExtensions(target)*：拦截Object.preventExtensions(proxy)，返回一个布尔值。<br>*getPrototypeOf(target)*：拦截Object.getPrototypeOf(proxy)，返回一个对象。<br>*isExtensible(target)*：拦截Object.isExtensible(proxy)，返回一个布尔值。<br>*setPrototypeOf(target, proto)*：拦截Object.setPrototypeOf(proxy,proto)，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。<br>*apply(target, object, args)*：拦截 Proxy实例作为函数调用的操作，比如proxy(…args)、proxy.call(object, …args)、proxy.apply(…)。<br>*construct(target, args)*：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(…args)。</p>
  
       <!-- reward -->
       
@@ -193,7 +169,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/19/%E9%97%AD%E5%8C%85/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/25/proxy/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -204,19 +180,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/25/proxy/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            proxy
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/01/18/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-nav-link">
+      <a href="/2021/01/19/%E9%97%AD%E5%8C%85/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">深浅拷贝</div>
+        <div class="article-nav-title">闭包</div>
       </a>
     
   </nav>
