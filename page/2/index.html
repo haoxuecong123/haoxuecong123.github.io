@@ -144,6 +144,53 @@
     
     
     <article
+  id="post-key的作用"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/11/key%E7%9A%84%E4%BD%9C%E7%94%A8/"
+    >在vue中循环key的作用</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/11/key%E7%9A%84%E4%BD%9C%E7%94%A8/" class="article-date">
+  <time datetime="2021-01-11T09:40:34.000Z" itemprop="datePublished">2021-01-11</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>VUE最大的特点就是双向绑定，数据一改变，页面也会实时更新；</strong><br><strong>但是对于用v-for渲染的列表数据来说，数据量一般很庞大，做todoList还会使用增删改操作，比如我们给列表增加一条数据，整个列表都要重新渲染一遍，会很浪费时间；</strong><br><strong>但是key的出现大大的避免了这个问题，提高效率，页面只会渲染一条数据，他会根据key值去判断某个值是否修改，如果修改就重新渲染，否则继续用之前的元素，但是不推荐index作为key</strong><br><strong>key值必须是唯一的且稳定</strong></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-vue-面试题整理"
   class="article article-type-post"
   itemscope
