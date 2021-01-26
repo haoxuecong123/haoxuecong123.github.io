@@ -144,6 +144,74 @@
     
     
     <article
+  id="post-ts-整理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/29/ts-%E6%95%B4%E7%90%86/"
+    >ts-基础类型整理</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/12/29/ts-%E6%95%B4%E7%90%86/" class="article-date">
+  <time datetime="2020-12-29T11:31:04.000Z" itemprop="datePublished">2020-12-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h1><ol>
+<li>let和const是JS里相对较新的变量声明方式，let在很多方面与var是相似的，但是可以避免在JS里遇见一些常见问题，const是对let的一个增强，他能组织对一个变量再次赋值</li>
+<li>因为ts是JS的超集，所以它本身就支持let和const</li>
+</ol>
+<h4 id="var声明"><a href="#var声明" class="headerlink" title="var声明"></a>var声明</h4><p>可以再函数内部定义变量</p>
+<h3 id="let声明"><a href="#let声明" class="headerlink" title="let声明"></a>let声明</h3><p>现在已经知道var存在一些问题，这恰好说明了为什么用let语句来声明变量。 除了名字不同外， let与var的写法一致。<br><em>块级作用域</em><br>当用let声明一个变量，它使用的是词法作用域或块作用域。 不同于使用 var声明的变量那样可以在包含它们的函数外访问，块作用域变量在包含它们的块或for循环之外是不能访问的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message=<span class="string">&quot;Hello world&quot;</span></span><br><span class="line">    <span class="keyword">return</span> message</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">input: boolean</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (input) &#123;</span><br><span class="line">        <span class="keyword">let</span> b = a + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们定义了2个变量a和b。 a的作用域是f函数体内，而b的作用域是if语句块里。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数的介绍：函数是JavaScript应用程序的基础。 它帮助你实现抽象层，模拟类，信息隐藏和模块。 在TypeScript里，虽然已经支持类，命名空间和模块，但函数仍然是主要的定义 行为的地方。 TypeScript为JavaScript函数添加了额外的功能，让我们可以更容易地使用。和JavaScript一样，TypeScript函数可以创建有名字的函数和匿名函数。 可以随意选择适合应用程序的方式，不论是定义一系列API函数还是只使用一次的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"><span class="comment">//在JavaScript里，函数可以使用函数体外部的变量</span></span><br></pre></td></tr></table></figure>
+<p><em>函数的定义</em><br>为上面代码添加类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> myAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"><span class="comment">//可以给每个参数添加类型之后再为函数本身添加返回值类型。 TypeScript能够根据返回语句自动推断出返回值类型，因此我们通常省略它。</span></span><br></pre></td></tr></table></figure>
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p><em>介绍</em><br>JSX是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因React框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。</p>
+<p><em>基本用法</em><br>使用JSX必须做两件事：</p>
+<ol>
+<li>给文件一个.tsx扩展名</li>
+<li>启用jsx选项<br>TS具有三种JSX模式：preserve，react和react-native</li>
+</ol>
+<p><em>这些模式只在代码生成阶段起作用 - 类型检查并不受影响。</em></p>
+<p><em>as操作符</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &lt;foo&gt;bar;</span><br></pre></td></tr></table></figure>
+<p>这里断言bar变量是foo类型的。 因为TypeScript也使用尖括号来表示类型断言，在结合JSX的语法后将带来解析上的困难。因此，TypeScript在.tsx文件里禁用了使用尖括号的类型断言。<br>由于不能够在.tsx文件里使用上述语法，应该使用另一个类型断言操作符：as,用as写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = bar <span class="keyword">as</span> foo;</span><br><span class="line"><span class="comment">//as操作符在.ts和.tsx里都可用，并且与尖括号类型断言行为是等价的。</span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-箭头函数与普通函数区别"
   class="article article-type-post"
   itemscope
