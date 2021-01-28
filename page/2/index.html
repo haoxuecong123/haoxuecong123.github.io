@@ -144,6 +144,136 @@
     
     
     <article
+  id="post-JS深入之new的模拟实现"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/13/JS%E6%B7%B1%E5%85%A5%E4%B9%8Bnew%E7%9A%84%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0/"
+    >JS深入之new的模拟实现</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/13/JS%E6%B7%B1%E5%85%A5%E4%B9%8Bnew%E7%9A%84%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0/" class="article-date">
+  <time datetime="2021-01-13T10:43:06.000Z" itemprop="datePublished">2021-01-13</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p><em>一句话介绍new</em><br>new运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一</p>
+<p><em>模拟new的效果</em><br>//new是关键字，无法像bind函数直接覆盖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Otaku</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用 new</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Otaku(……);</span><br><span class="line"><span class="comment">// 使用 objectFactory</span></span><br><span class="line"><span class="keyword">var</span> person = objectFactory(Otaku, ……)</span><br></pre></td></tr></table></figure>
+<p><em>分析</em><br>因为new的结果是一个新对象，所以在模拟实现的时候，我们也要建立一个对象，假设这个对象叫obj，因为obj具有Otaku构造函数里的属性，在继承里面，可以使用 Otaku.apply(obj, arguments)来给 obj 添加新的属性；<br>实例的__proto__属性会指向构造函数prototype，也正是因为建立起这样的关系，实例可以访问原型上的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">objectFactory</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(),</span><br><span class="line"></span><br><span class="line">    Constructor = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">    obj.__proto__ = Constructor.prototype;</span><br><span class="line"></span><br><span class="line">    Constructor.apply(obj, <span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><em>分析</em></p>
+<ol>
+<li>用new Object() 的方式新建了一个对象 obj</li>
+<li>取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数</li>
+<li>将 obj 的原型指向构造函数，这样 obj 就可以访问到构造函数原型中的属性</li>
+<li>使用 apply，改变构造函数 this 的指向到新建的对象，这样 obj 就可以访问到构造函数中的属性</li>
+<li>返回 obj</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-HTTP协议"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/12/HTTP%E5%8D%8F%E8%AE%AE/"
+    >HTTP协议</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/12/HTTP%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time datetime="2021-01-12T10:18:20.000Z" itemprop="datePublished">2021-01-12</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p><em>HTTP特点</em></p>
+<ol>
+<li>HTTP协议是超文本传输协议，它是一个基于请求与响应、无状态、应用层的协议，常用于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议；HTTP 有多个版本，目前广泛使用的是HTTP/1.1版本。</li>
+</ol>
+<p><em>HTTP特点</em></p>
+<ol>
+<li>请求和响应基本特性：由客户端发起请求，服务端响应</li>
+<li>客户向服务器请求服务时，只需传送请求方法和路径。请求方法常有GET、POST</li>
+<li>HTTP 允许传输任意类型的数据对象。传输的类型由Content-Type以标记。 </li>
+<li>限制每次连接只处理一个请求。服务器处理完请求，并收到客户的应答后，即断开连接，但是却不利于客户端与服务器保持会话连接，为了弥补这种不足，产生了两项记录 HTTP 状态的技术，一个叫做 Cookie,一个叫做 Session。</li>
+<li>无状态是指协议对于事务处理没有记忆，后续处理需要前面的信息，则必须重传。</li>
+</ol>
+<p><em>常见的请求方法</em></p>
+<ol>
+<li>GET：请求指定的页面信息，并返回实体主体。</li>
+<li>POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。</li>
+<li>HEAD：类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li>PUT：从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li>DELETE：请求服务器删除指定的页面。</li>
+</ol>
+<p><em>HTTP缺点</em></p>
+<ol>
+<li>传输：数据安全肉眼可见，能够方便的研究和分析，但也容易被窃听</li>
+<li>HTTP是不安全的，无法验证通信双方的身份</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-key的作用"
   class="article article-type-post"
   itemscope
@@ -191,7 +321,7 @@
 
     
     <article
-  id="post-vue-面试题整理"
+  id="post-ts-基础类型整理"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -202,65 +332,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/12/30/vue-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"
-    >vue-面试题整理</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/30/vue-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" class="article-date">
-  <time datetime="2020-12-30T00:48:54.000Z" itemprop="datePublished">2020-12-30</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Vuex2-x响应式数据原理"><a href="#Vuex2-x响应式数据原理" class="headerlink" title="Vuex2.x响应式数据原理"></a>Vuex2.x响应式数据原理</h1><ol>
-<li>vue在初始化数据的时候，会使用Object.defineProperty重新定义data中的所有属性，当页面使用对应属性时，首先会进行依赖收集当前组件的watcher，如果属性发生变化会通知相关依赖进行更新操作</li>
-</ol>
-<h1 id="Vuex3-x响应式数据原理"><a href="#Vuex3-x响应式数据原理" class="headerlink" title="Vuex3.x响应式数据原理"></a>Vuex3.x响应式数据原理</h1><ol start="2">
-<li>Vuex3.x改用Proxy替代Object.defineProperty；因为Prox可以直接监听对象和数组的变化，并且有多达13种拦截方法。Proxy只会代理对象的第一层，用Vue3处理，可以判断当前Refiect.get的返回值是否为Object，如果是就通过reactive方法做代理，这样就实现了深度观测，监测数组的时候可以触发多次get/set，为了防止触发多次，可以判断key是否为当前被代理对象target自身属性，也可以判断旧值与新值是否相等，只有满足以上两个条件之一时，才有可能执行trigger。</li>
-</ol>
-<h1 id="Computed和Watch"><a href="#Computed和Watch" class="headerlink" title="Computed和Watch"></a>Computed和Watch</h1><ol start="3">
-<li>Computed本质是一个具备缓存的watcher，依赖的属性发生变化就会更新视图。<br>适用于计算比较消耗性能的计算场景。当表达式过于复杂时，在模板中放入过多逻辑会让模板难以维护，可以将复杂的逻辑放入计算属性中处理。<br>Watch没有缓存性，更多的是观察的作用，可以监听某些数据执行回调。当我们需要深度监听对象中的属性时，可以打开deep：true选项，这样便会对对象中的每一项进行监听。这样会带来性能问题，优化的话可以使用字符串形式监听，如果没有写到组件中，不要忘记使用unWatch手动注销</li>
-</ol>
-<h1 id="组件中的data为什么是一个函数"><a href="#组件中的data为什么是一个函数" class="headerlink" title="组件中的data为什么是一个函数"></a>组件中的data为什么是一个函数</h1><ol start="4">
-<li>一个组件被多次使用，就会创建多个实例；本质上，这些实例用的都是同一个构造函数，如果data是对象的话，对象属于引用类型，会影响到所有实例；所以为了保证组件不同的实例之间data不冲突，data必须是一个函数。</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-ts-整理"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/29/ts-%E6%95%B4%E7%90%86/"
+  <a class="article-title" href="/2020/12/29/ts-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E6%95%B4%E7%90%86/"
     >ts-基础类型整理</a> 
 </h2>
  
@@ -268,7 +340,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/29/ts-%E6%95%B4%E7%90%86/" class="article-date">
+      <a href="/2020/12/29/ts-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E6%95%B4%E7%90%86/" class="article-date">
   <time datetime="2020-12-29T11:31:04.000Z" itemprop="datePublished">2020-12-29</time>
 </a>    
     </div>
@@ -724,53 +796,6 @@ React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-o
 <p>想要复用一个有状态的组件太麻烦了！<br>我们都知道react都核心思想就是，将一个页面拆成一堆独立的，可复用的组件，并且用自上而下的单向数据流的形式将这些组件串联起来。但假如你在大型的工作项目中用react，你会发现你的项目中实际上很多react组件冗长且难以复用。尤其是那些写成class的组件，它们本身包含了状态（state），所以复用这类组件就变得很麻烦。</p>
 <p>那之前，官方推荐怎么解决这个问题呢？答案是：渲染属性（Render Props）和高阶组件（Higher-Order Components）。我们可以稍微跑下题简单看一下这两种模式。</p>
 <p>渲染属性指的是使用一个值为函数的prop来传递需要动态渲染的nodes或组件。如下面的代码可以看到我们的DataProvider组件包含了所有跟状态相关的代码，而Cat组件则可以是一个单纯的展示型组件，这样一来DataProvider就可以单独复用了。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-vue总结"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/25/vue%E6%80%BB%E7%BB%93/"
-    >vue总结</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/25/vue%E6%80%BB%E7%BB%93/" class="article-date">
-  <time datetime="2020-12-25T11:21:53.000Z" itemprop="datePublished">2020-12-25</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>这是我的第一篇博客</p>
  
       <!-- reward -->
       

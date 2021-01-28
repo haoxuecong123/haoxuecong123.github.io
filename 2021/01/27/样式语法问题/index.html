@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    CSS样式语法问题 |  Hexo
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="css-样式语法问题"
+  class="article article-type-css"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  CSS样式语法问题
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/27/%E6%A0%B7%E5%BC%8F%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2021-01-27T10:01:24.000Z" itemprop="datePublished">2021-01-27</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Display-none与Visibility-hidden有什么区别"><a href="#Display-none与Visibility-hidden有什么区别" class="headerlink" title="Display:none与Visibility:hidden有什么区别"></a>Display:none与Visibility:hidden有什么区别</h2><p><strong>在css中，设置元素的隐藏的方式，主要有两种，一种是display:none，一种是visibility:hidden</strong><br><em>区别</em></p>
+<ol>
+<li>空间占据</li>
+</ol>
+<ul>
+<li>首先是空间占据方面，设置了display:none 样式的元素，在文档流中是不占位置的，而且，浏览器也不会解析这个元素；而设置了visibility:hidden样式的元素，在文档流中仍然占位，可以理解为，只是把透明度变成了0;</li>
+<li>举例说明:比如，我这里有2个ul，每个ul下面，有4个li，而且，对每个li都做了编号。现在我们对li3设置了display:none样式，而对li7设置了visibility:hidden属性;</li>
+<li>结果就会是:隐藏li3后，li3在页面消失且不占位，li4将li3的位置霸占了，可以理解为彻底消失；而隐藏li7后，从视觉上来看，li7是消失了，但是li7的位置还保留着，它的位置别人不能随便占。</li>
+</ul>
+<ol start="2">
+<li>株连型</li>
+</ol>
+<ul>
+<li>株连是什么意思呢？大家应该都听过株连九族这个词，株连其实可以理解为，自己啥也没干，就被连累了。这个株连性，主要体现在父子关系的结构中;</li>
+<li>举例说明:有2个ul，每个ul下面，有有4个li，而且，对每个li都做了编号。在li3和li7下面呢，又有一个div，写着“我是li3的儿子”、“我是li7的儿子”。我对li3设置display:none样式，而对li7设置visibility:hidden属性</li>
+<li>结果:li3和它的儿子，一起彻底消失，都不占位；而li7和它的儿子，都是视觉上消失了，但位置还在;</li>
+<li>总结:一旦父节点元素应用了 display:none，父节点及其子孙节点元素全部不可见</li>
+</ul>
+<h2 id="CSS-hack的原理及常用hack"><a href="#CSS-hack的原理及常用hack" class="headerlink" title="CSS hack的原理及常用hack"></a>CSS hack的原理及常用hack</h2><p><strong>原理:利用不同浏览器对CSS的支持和解析结果不一样编写针对特定浏览器样式。常见的hack有1.属性hack、2.选择器hack、3.IE条件注释</strong></p>
+<ol>
+<li>IE条件:适用于[IE5,IE9]常见格式:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[<span class="keyword">if</span> IE <span class="number">6</span>]&gt;</span><br><span class="line">Special instructions <span class="keyword">for</span> IE <span class="number">6</span> here</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></li>
+<li>选择器hack:不同浏览器对选择器的支持不一样<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***** Selector Hacks ******/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6 and below */</span></span><br><span class="line">* html #uno  &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7 */</span></span><br><span class="line">*:first-child+html #dos &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7, FF, Saf, Opera  */</span></span><br><span class="line">html&gt;body #tres &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE8, FF, Saf, Opera (Everything but IE 6,7) */</span></span><br><span class="line">html&gt;<span class="comment">/**/</span>body #cuatro &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Opera 9.27 and below, safari 2 */</span></span><br><span class="line">html:first-child #cinco &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2-3 */</span></span><br><span class="line">html[xmlns*=<span class="string">&quot;&quot;</span>] body:last-child #seis &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* safari 3+, chrome 1+, opera9+, ff 3.5+ */</span></span><br><span class="line">body:nth-<span class="keyword">of</span>-type(<span class="number">1</span>) #siete &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* safari 3+, chrome 1+, opera9+, ff 3.5+ */</span></span><br><span class="line">body:first-<span class="keyword">of</span>-type #ocho &#123;  <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* saf3+, chrome1+ */</span></span><br><span class="line">@media screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>) &#123;</span><br><span class="line"> #diez  &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* iPhone / mobile webkit */</span></span><br><span class="line">@media screen and (max-device-width: 480px) &#123;</span><br><span class="line"> #veintiseis &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2 - 3.1 */</span></span><br><span class="line">html[xmlns*=<span class="string">&quot;&quot;</span>]:root #trece  &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2 - 3.1, Opera 9.25 */</span></span><br><span class="line">*|html[xmlns*=<span class="string">&quot;&quot;</span>] #catorce &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Everything but IE6-8 */</span></span><br><span class="line">:root *&gt; #quince &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7 */</span></span><br><span class="line">*+html #dieciocho &#123;  <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Firefox only. 1+ */</span></span><br><span class="line">#veinticuatro,  <span class="attr">x</span>:-moz-any-link  &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Firefox 3.0+ */</span></span><br><span class="line">#veinticinco,  <span class="attr">x</span>:-moz-any-link, <span class="attr">x</span>:<span class="keyword">default</span>  &#123; <span class="attr">color</span>: red  &#125;</span><br></pre></td></tr></table></figure></li>
+<li>属性hack:不同浏览器解析bug或方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* IE6 */</span></span><br><span class="line">#once &#123; <span class="attr">_color</span>: blue &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7 */</span></span><br><span class="line">#doce &#123; *color: blue; <span class="comment">/* or #color: blue */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Everything but IE6 */</span></span><br><span class="line">#diecisiete &#123; color<span class="comment">/**/</span>: blue &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7, IE8 */</span></span><br><span class="line">#diecinueve &#123; <span class="attr">color</span>: blue\<span class="number">9</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7, IE8 */</span></span><br><span class="line">#veinte &#123; color<span class="comment">/*\**/</span>: blue\<span class="number">9</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7 -- acts as an !important */</span></span><br><span class="line">#veintesiete &#123; <span class="attr">color</span>: blue !ie; &#125; <span class="comment">/* string after ! can be anything */</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="specified-value、computed-value、used-value计算方法"><a href="#specified-value、computed-value、used-value计算方法" class="headerlink" title="specified value、computed value、used value计算方法"></a>specified value、computed value、used value计算方法</h3><ol>
+<li>specified value</li>
+</ol>
+<ul>
+<li>如果样式表设置了值，使用这个值</li>
+<li>如果没有设置值，该属性是继承属性，则从父元素继承</li>
+<li>如果没有设置值也不是继承属性，则使用css规范指定的初始值</li>
+</ul>
+<ol start="2">
+<li>computed value</li>
+</ol>
+<ul>
+<li>以specified value根据规范定义的行为进行计算，通常将相对值计算为绝对值，例如em根据font-size进行计算。</li>
+<li>一些使用百分数并且需要布局来决定最终值的属性，如width，margin。</li>
+<li>百分数就直接作为computed value。line-height的无单位值也直接作为computed value。这些值将在计算used value时得到绝对值。computed value的主要作用是用于继承</li>
+</ul>
+<ol start="3">
+<li>used value</li>
+</ol>
+<ul>
+<li>属性计算后的最终值，对于大多数属性可以通过window.getComputedStyle(返回的是 CSSStyleDeclaration 对象)获得，尺寸值单位为像素。以下属性依赖于布局<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">background-position</span><br><span class="line">bottom, left, right, top</span><br><span class="line">height, width</span><br><span class="line">margin-bottom, margin-left, margin-right, margin-top</span><br><span class="line">min-height, min-width</span><br><span class="line">padding-bottom, padding-left, padding-right, padding-top</span><br><span class="line">text-indent</span><br></pre></td></tr></table></figure>
+<h3 id="Link与-import的区别"><a href="#Link与-import的区别" class="headerlink" title="Link与@import的区别"></a>Link与@import的区别</h3></li>
+</ul>
+<p><strong>区别</strong></p>
+<ol>
+<li><p>从属关系区别<br>@import是 CSS 提供的语法规则，只有导入样式表的作用；link是HTML提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。</p>
+</li>
+<li><p>加载顺序区别<br>加载页面时，link标签引入的 CSS 被同时加载；@import引入的 CSS 将在页面加载完毕后被加载。</p>
+</li>
+<li><p>兼容性问题<br>@import是 CSS2.1 才有的语法，故只可在 IE5+ 才能识别；link标签作为 HTML 元素，不存在兼容性问题。</p>
+</li>
+<li><p>DOM可控性区别<br>可以通过 JS 操作 DOM ，插入link标签来改变样式；由于DOM方法是基于文档的，无法使用@import的方式插入样式。</p>
+</li>
+</ol>
+<h3 id="Display-block与Display-inline的区别"><a href="#Display-block与Display-inline的区别" class="headerlink" title="Display:block与Display:inline的区别"></a>Display:block与Display:inline的区别</h3><ol>
+<li><p>display：block将元素显示为块级元素，可以设置width和height属性以及内外边距，每个块级元素独占一行。</p>
+</li>
+<li><p>display : inline将元素显示为行内元素，高度，行高以及底边距不可改变，高度就是内容文字或者图片的宽度，不可以改变。多个相邻的行内元素排在同一行里并排显示，如果页面一行排列不下，才会换新的一行。width，height，top-bottom margin 等属性不起作用。</p>
+</li>
+</ol>
+<h3 id="PNG、GIF、JPG区别及如何选择"><a href="#PNG、GIF、JPG区别及如何选择" class="headerlink" title="PNG、GIF、JPG区别及如何选择"></a>PNG、GIF、JPG区别及如何选择</h3><ol>
+<li><p>jpg是一种有损的基于直接色的图片格式。由于采用直接色，jpg可使用的颜色有1600w之多（2^24），而人眼识别的颜色数量大约只有1w多种，因此jpg非常适合色彩丰富图片、渐变色。jpg有损压缩移除肉眼无法识别的图片细节后，可以将图片的尺寸大幅度地减小。但是jpg不适合icon、logo，因为相比gif/png-8，它在文件大小上丝毫没有优势。</p>
+</li>
+<li><p>gif采用LZW压缩算法进行编码，是一种无损的基于索引色的图片格式。由于采用了无损压缩，相比古老的bmp格式，尺寸较小，而且支持透明和动画。缺点是由于gif只存储8位索引（也就是最多能表达2^8=256种颜色），色彩复杂、细节丰富的图片不适合保存为gif格式。色彩简单的logo、icon、线框图适合采用gif格式。</p>
+</li>
+<li><p>png优点:无损压缩、支持透明、简单图片尺寸小；缺点：不支持动画、色彩丰富的图片尺寸大；适用场景：logo/icon/透明图</p>
+</li>
+</ol>
+<h3 id="offsetWidth-offsetHeight-clientWidth-clientHeight-与-scrollWidth-scrollHeight-的区别"><a href="#offsetWidth-offsetHeight-clientWidth-clientHeight-与-scrollWidth-scrollHeight-的区别" class="headerlink" title="offsetWidth/offsetHeight,clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别"></a>offsetWidth/offsetHeight,clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别</h3><ol>
+<li><p>clientWidth/clientHeight 返回值包含 content + padding，如有滚动条，也不包含滚动条;内容区域的显示大小:对于没有定义CSS或者内联布局盒子的元素为0， 否则，它是元素内部的高度(单位像素)，包含内边距，但不包括水平滚动条、边框和外边距。</p>
+</li>
+<li><p>scrollWidth/scrollHeight 返回值包含 content + padding + 溢出内容的尺寸;表示一个元素内容区域的实际大小， 包括不在页面中的可滚动部分</p>
+</li>
+<li><p>offsetWidth 就表示元素的布局宽高，并不代表实际渲染出来的宽高<br>offsetWidth/offsetHeight = content + padding + border<br>CSS 「标准宽高」，它包含了边框、内边距、元素内容 以及滚动条（如果存在的话）。</p>
+</li>
+</ol>
+<h3 id="什么是web语义化，有什么好处"><a href="#什么是web语义化，有什么好处" class="headerlink" title="什么是web语义化，有什么好处"></a>什么是web语义化，有什么好处</h3><p><strong>什么是web语义化</strong><br>Web语义化是指使用恰当语义的html标签、class类名等内容，让页面具有良好的结构与含义，从而让人和机器都能快速理解网页内容。语义化的web页面一方面可以让机器在更少的人类干预情况下收集并研究网页的信息，从而可以读懂网页的内容，然后将收集汇总的信息进行分析，结果为人类所用；另一方面它可以让开发人员读懂结构和用户以及屏幕阅读器（如果访客有视障）能够读懂内容。<br>简单来说就是利于 SEO，便于阅读维护理解。</p>
+<p><strong>好处</strong></p>
+<ol>
+<li>正确的标签做正确的事情</li>
+<li>页面内容结构化</li>
+<li>无CSS样子时也容易阅读，便于阅读维护和理解</li>
+<li>便于浏览器、搜索引擎解析。 利于爬虫标记、利于SEO(搜索引擎)</li>
+</ol>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/27/%E6%A0%B7%E5%BC%8F%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/01/28/%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            VUE 路由原理
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/01/26/sprite/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">CSS sprite</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2021
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我的</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>

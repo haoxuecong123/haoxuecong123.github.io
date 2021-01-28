@@ -144,6 +144,212 @@
     
     
     <article
+  id="vue-路由原理"
+  class="article article-type-vue"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/28/%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86/"
+    >VUE 路由原理</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/28/%E8%B7%AF%E7%94%B1%E5%8E%9F%E7%90%86/" class="article-date">
+  <time datetime="2021-01-28T11:54:11.000Z" itemprop="datePublished">2021-01-28</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><ol>
+<li>vue-router是让单页面拥有多页面的效果；一个url对应一个页面</li>
+<li>为什么使用vue-router不用a标签：a标签也可以跳转但是会刷新页面，但是vue-router可以解决这种问题，url变化时不刷新页面，而且可以监听变化           </li>
+<li>原理：分两种模式：history、hash</li>
+</ol>
+<h3 id="两种模式用法"><a href="#两种模式用法" class="headerlink" title="两种模式用法"></a>两种模式用法</h3><p><strong>history接口不继承任何方法</strong><br><em>属性：</em></p>
+<ol>
+<li>history.length:只读的，返回一个整数，该整数表示会话历史中元素的数目，包括当前加载的页。例如，在一个新的选项卡加载的一个页面中，这个属性返回1。</li>
+<li>history.state：只读的，返回一个表示历史堆栈顶部的状态的值。</li>
+</ol>
+<p><em>方法：接口不继承任何方法。</em></p>
+<ol>
+<li>history.back():在浏览器历史记录里前往上一页,等价于 history.go(-1).</li>
+<li>history.forward():在浏览器历史记录里前往下一页，等价于 history.go(1).</li>
+<li>history.go():通过当前页面的相对位置从浏览器历史记录( 会话记录 )加载页面。比如：参数为-1的时候为上一页，参数为1的时候为下一页. 当整数参数超出界限时,例如: 如果当前页为第一页，前面已经没有页面了，我传参的值为-1，那么这个方法没有任何效果也不会报错。调用没有参数的 go() 方法或者不是整数的参数时也没有效果。</li>
+<li>history.pushState(): 方法向当前浏览器会话的历史堆栈中添加一个状态;</li>
+</ol>
+<p><strong>语法:</strong><br>history.pushState(state, title[, url])<br><strong>参数:</strong></p>
+<ol>
+<li>state:状态对象是一个JavaScript对象，它与pushState()创建的新历史记录条目相关联。 每当用户导航到新状态时，都会触发popstate事件，并且该事件的状态属性包含历史记录条目的状态对象的副本。</li>
+<li>title:在此处传递空字符串应该可以防止将来对方法的更改。</li>
+<li>url:新历史记录条目的URL由此参数指定。 请注意，浏览器不会在调用pushState() 之后尝试加载此URL，但可能会稍后尝试加载URL{不会加载页面，不会刷新}</li>
+</ol>
+<p><strong>hash模式</strong><br><em>即地址栏 URL 中的 # 符号,这个#就是hash符号</em><br><strong>特点</strong><br>hash 虽然出现在 URL 中，但不会被包括在 HTTP 请求中，对后端完全没有影响，因此改变 hash 不会重新加载页面。<br><strong>原理</strong><br>路由的hash模式其实是利用了window.onhashchange事件，也就是说你的url中的hash值（#后面的值）如果有变化，就会自动调用hashchange的监听事件，在hashchange的监听事件内可以得到改变后的url，这样能够找到对应页面进行加载</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="css-样式语法问题"
+  class="article article-type-css"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/27/%E6%A0%B7%E5%BC%8F%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98/"
+    >CSS样式语法问题</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/27/%E6%A0%B7%E5%BC%8F%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2021-01-27T10:01:24.000Z" itemprop="datePublished">2021-01-27</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Display-none与Visibility-hidden有什么区别"><a href="#Display-none与Visibility-hidden有什么区别" class="headerlink" title="Display:none与Visibility:hidden有什么区别"></a>Display:none与Visibility:hidden有什么区别</h2><p><strong>在css中，设置元素的隐藏的方式，主要有两种，一种是display:none，一种是visibility:hidden</strong><br><em>区别</em></p>
+<ol>
+<li>空间占据</li>
+</ol>
+<ul>
+<li>首先是空间占据方面，设置了display:none 样式的元素，在文档流中是不占位置的，而且，浏览器也不会解析这个元素；而设置了visibility:hidden样式的元素，在文档流中仍然占位，可以理解为，只是把透明度变成了0;</li>
+<li>举例说明:比如，我这里有2个ul，每个ul下面，有4个li，而且，对每个li都做了编号。现在我们对li3设置了display:none样式，而对li7设置了visibility:hidden属性;</li>
+<li>结果就会是:隐藏li3后，li3在页面消失且不占位，li4将li3的位置霸占了，可以理解为彻底消失；而隐藏li7后，从视觉上来看，li7是消失了，但是li7的位置还保留着，它的位置别人不能随便占。</li>
+</ul>
+<ol start="2">
+<li>株连型</li>
+</ol>
+<ul>
+<li>株连是什么意思呢？大家应该都听过株连九族这个词，株连其实可以理解为，自己啥也没干，就被连累了。这个株连性，主要体现在父子关系的结构中;</li>
+<li>举例说明:有2个ul，每个ul下面，有有4个li，而且，对每个li都做了编号。在li3和li7下面呢，又有一个div，写着“我是li3的儿子”、“我是li7的儿子”。我对li3设置display:none样式，而对li7设置visibility:hidden属性</li>
+<li>结果:li3和它的儿子，一起彻底消失，都不占位；而li7和它的儿子，都是视觉上消失了，但位置还在;</li>
+<li>总结:一旦父节点元素应用了 display:none，父节点及其子孙节点元素全部不可见</li>
+</ul>
+<h2 id="CSS-hack的原理及常用hack"><a href="#CSS-hack的原理及常用hack" class="headerlink" title="CSS hack的原理及常用hack"></a>CSS hack的原理及常用hack</h2><p><strong>原理:利用不同浏览器对CSS的支持和解析结果不一样编写针对特定浏览器样式。常见的hack有1.属性hack、2.选择器hack、3.IE条件注释</strong></p>
+<ol>
+<li>IE条件:适用于[IE5,IE9]常见格式:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[<span class="keyword">if</span> IE <span class="number">6</span>]&gt;</span><br><span class="line">Special instructions <span class="keyword">for</span> IE <span class="number">6</span> here</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></li>
+<li>选择器hack:不同浏览器对选择器的支持不一样<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***** Selector Hacks ******/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6 and below */</span></span><br><span class="line">* html #uno  &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7 */</span></span><br><span class="line">*:first-child+html #dos &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7, FF, Saf, Opera  */</span></span><br><span class="line">html&gt;body #tres &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE8, FF, Saf, Opera (Everything but IE 6,7) */</span></span><br><span class="line">html&gt;<span class="comment">/**/</span>body #cuatro &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Opera 9.27 and below, safari 2 */</span></span><br><span class="line">html:first-child #cinco &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2-3 */</span></span><br><span class="line">html[xmlns*=<span class="string">&quot;&quot;</span>] body:last-child #seis &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* safari 3+, chrome 1+, opera9+, ff 3.5+ */</span></span><br><span class="line">body:nth-<span class="keyword">of</span>-type(<span class="number">1</span>) #siete &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* safari 3+, chrome 1+, opera9+, ff 3.5+ */</span></span><br><span class="line">body:first-<span class="keyword">of</span>-type #ocho &#123;  <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* saf3+, chrome1+ */</span></span><br><span class="line">@media screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>) &#123;</span><br><span class="line"> #diez  &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* iPhone / mobile webkit */</span></span><br><span class="line">@media screen and (max-device-width: 480px) &#123;</span><br><span class="line"> #veintiseis &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2 - 3.1 */</span></span><br><span class="line">html[xmlns*=<span class="string">&quot;&quot;</span>]:root #trece  &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Safari 2 - 3.1, Opera 9.25 */</span></span><br><span class="line">*|html[xmlns*=<span class="string">&quot;&quot;</span>] #catorce &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Everything but IE6-8 */</span></span><br><span class="line">:root *&gt; #quince &#123; <span class="attr">color</span>: red  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7 */</span></span><br><span class="line">*+html #dieciocho &#123;  <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Firefox only. 1+ */</span></span><br><span class="line">#veinticuatro,  <span class="attr">x</span>:-moz-any-link  &#123; <span class="attr">color</span>: red &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Firefox 3.0+ */</span></span><br><span class="line">#veinticinco,  <span class="attr">x</span>:-moz-any-link, <span class="attr">x</span>:<span class="keyword">default</span>  &#123; <span class="attr">color</span>: red  &#125;</span><br></pre></td></tr></table></figure></li>
+<li>属性hack:不同浏览器解析bug或方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* IE6 */</span></span><br><span class="line">#once &#123; <span class="attr">_color</span>: blue &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7 */</span></span><br><span class="line">#doce &#123; *color: blue; <span class="comment">/* or #color: blue */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Everything but IE6 */</span></span><br><span class="line">#diecisiete &#123; color<span class="comment">/**/</span>: blue &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7, IE8 */</span></span><br><span class="line">#diecinueve &#123; <span class="attr">color</span>: blue\<span class="number">9</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE7, IE8 */</span></span><br><span class="line">#veinte &#123; color<span class="comment">/*\**/</span>: blue\<span class="number">9</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* IE6, IE7 -- acts as an !important */</span></span><br><span class="line">#veintesiete &#123; <span class="attr">color</span>: blue !ie; &#125; <span class="comment">/* string after ! can be anything */</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="specified-value、computed-value、used-value计算方法"><a href="#specified-value、computed-value、used-value计算方法" class="headerlink" title="specified value、computed value、used value计算方法"></a>specified value、computed value、used value计算方法</h3><ol>
+<li>specified value</li>
+</ol>
+<ul>
+<li>如果样式表设置了值，使用这个值</li>
+<li>如果没有设置值，该属性是继承属性，则从父元素继承</li>
+<li>如果没有设置值也不是继承属性，则使用css规范指定的初始值</li>
+</ul>
+<ol start="2">
+<li>computed value</li>
+</ol>
+<ul>
+<li>以specified value根据规范定义的行为进行计算，通常将相对值计算为绝对值，例如em根据font-size进行计算。</li>
+<li>一些使用百分数并且需要布局来决定最终值的属性，如width，margin。</li>
+<li>百分数就直接作为computed value。line-height的无单位值也直接作为computed value。这些值将在计算used value时得到绝对值。computed value的主要作用是用于继承</li>
+</ul>
+<ol start="3">
+<li>used value</li>
+</ol>
+<ul>
+<li>属性计算后的最终值，对于大多数属性可以通过window.getComputedStyle(返回的是 CSSStyleDeclaration 对象)获得，尺寸值单位为像素。以下属性依赖于布局<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">background-position</span><br><span class="line">bottom, left, right, top</span><br><span class="line">height, width</span><br><span class="line">margin-bottom, margin-left, margin-right, margin-top</span><br><span class="line">min-height, min-width</span><br><span class="line">padding-bottom, padding-left, padding-right, padding-top</span><br><span class="line">text-indent</span><br></pre></td></tr></table></figure>
+<h3 id="Link与-import的区别"><a href="#Link与-import的区别" class="headerlink" title="Link与@import的区别"></a>Link与@import的区别</h3></li>
+</ul>
+<p><strong>区别</strong></p>
+<ol>
+<li><p>从属关系区别<br>@import是 CSS 提供的语法规则，只有导入样式表的作用；link是HTML提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。</p>
+</li>
+<li><p>加载顺序区别<br>加载页面时，link标签引入的 CSS 被同时加载；@import引入的 CSS 将在页面加载完毕后被加载。</p>
+</li>
+<li><p>兼容性问题<br>@import是 CSS2.1 才有的语法，故只可在 IE5+ 才能识别；link标签作为 HTML 元素，不存在兼容性问题。</p>
+</li>
+<li><p>DOM可控性区别<br>可以通过 JS 操作 DOM ，插入link标签来改变样式；由于DOM方法是基于文档的，无法使用@import的方式插入样式。</p>
+</li>
+</ol>
+<h3 id="Display-block与Display-inline的区别"><a href="#Display-block与Display-inline的区别" class="headerlink" title="Display:block与Display:inline的区别"></a>Display:block与Display:inline的区别</h3><ol>
+<li><p>display：block将元素显示为块级元素，可以设置width和height属性以及内外边距，每个块级元素独占一行。</p>
+</li>
+<li><p>display : inline将元素显示为行内元素，高度，行高以及底边距不可改变，高度就是内容文字或者图片的宽度，不可以改变。多个相邻的行内元素排在同一行里并排显示，如果页面一行排列不下，才会换新的一行。width，height，top-bottom margin 等属性不起作用。</p>
+</li>
+</ol>
+<h3 id="PNG、GIF、JPG区别及如何选择"><a href="#PNG、GIF、JPG区别及如何选择" class="headerlink" title="PNG、GIF、JPG区别及如何选择"></a>PNG、GIF、JPG区别及如何选择</h3><ol>
+<li><p>jpg是一种有损的基于直接色的图片格式。由于采用直接色，jpg可使用的颜色有1600w之多（2^24），而人眼识别的颜色数量大约只有1w多种，因此jpg非常适合色彩丰富图片、渐变色。jpg有损压缩移除肉眼无法识别的图片细节后，可以将图片的尺寸大幅度地减小。但是jpg不适合icon、logo，因为相比gif/png-8，它在文件大小上丝毫没有优势。</p>
+</li>
+<li><p>gif采用LZW压缩算法进行编码，是一种无损的基于索引色的图片格式。由于采用了无损压缩，相比古老的bmp格式，尺寸较小，而且支持透明和动画。缺点是由于gif只存储8位索引（也就是最多能表达2^8=256种颜色），色彩复杂、细节丰富的图片不适合保存为gif格式。色彩简单的logo、icon、线框图适合采用gif格式。</p>
+</li>
+<li><p>png优点:无损压缩、支持透明、简单图片尺寸小；缺点：不支持动画、色彩丰富的图片尺寸大；适用场景：logo/icon/透明图</p>
+</li>
+</ol>
+<h3 id="offsetWidth-offsetHeight-clientWidth-clientHeight-与-scrollWidth-scrollHeight-的区别"><a href="#offsetWidth-offsetHeight-clientWidth-clientHeight-与-scrollWidth-scrollHeight-的区别" class="headerlink" title="offsetWidth/offsetHeight,clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别"></a>offsetWidth/offsetHeight,clientWidth/clientHeight 与 scrollWidth/scrollHeight 的区别</h3><ol>
+<li><p>clientWidth/clientHeight 返回值包含 content + padding，如有滚动条，也不包含滚动条;内容区域的显示大小:对于没有定义CSS或者内联布局盒子的元素为0， 否则，它是元素内部的高度(单位像素)，包含内边距，但不包括水平滚动条、边框和外边距。</p>
+</li>
+<li><p>scrollWidth/scrollHeight 返回值包含 content + padding + 溢出内容的尺寸;表示一个元素内容区域的实际大小， 包括不在页面中的可滚动部分</p>
+</li>
+<li><p>offsetWidth 就表示元素的布局宽高，并不代表实际渲染出来的宽高<br>offsetWidth/offsetHeight = content + padding + border<br>CSS 「标准宽高」，它包含了边框、内边距、元素内容 以及滚动条（如果存在的话）。</p>
+</li>
+</ol>
+<h3 id="什么是web语义化，有什么好处"><a href="#什么是web语义化，有什么好处" class="headerlink" title="什么是web语义化，有什么好处"></a>什么是web语义化，有什么好处</h3><p><strong>什么是web语义化</strong><br>Web语义化是指使用恰当语义的html标签、class类名等内容，让页面具有良好的结构与含义，从而让人和机器都能快速理解网页内容。语义化的web页面一方面可以让机器在更少的人类干预情况下收集并研究网页的信息，从而可以读懂网页的内容，然后将收集汇总的信息进行分析，结果为人类所用；另一方面它可以让开发人员读懂结构和用户以及屏幕阅读器（如果访客有视障）能够读懂内容。<br>简单来说就是利于 SEO，便于阅读维护理解。</p>
+<p><strong>好处</strong></p>
+<ol>
+<li>正确的标签做正确的事情</li>
+<li>页面内容结构化</li>
+<li>无CSS样子时也容易阅读，便于阅读维护和理解</li>
+<li>便于浏览器、搜索引擎解析。 利于爬虫标记、利于SEO(搜索引擎)</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="css-sprite"
   class="article article-type-css"
   itemscope
@@ -720,136 +926,6 @@
 <li>采用混合加密技术，中间者无法直接查看明文内容</li>
 <li>通过证书认证客户端访问的是自己的服务器（确认网站的真实性）</li>
 <li>防止传输的内容被中间人冒充或者篡改</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-JS深入之new的模拟实现"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/01/13/JS%E6%B7%B1%E5%85%A5%E4%B9%8Bnew%E7%9A%84%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0/"
-    >JS深入之new的模拟实现</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/01/13/JS%E6%B7%B1%E5%85%A5%E4%B9%8Bnew%E7%9A%84%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0/" class="article-date">
-  <time datetime="2021-01-13T10:43:06.000Z" itemprop="datePublished">2021-01-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p><em>一句话介绍new</em><br>new运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一</p>
-<p><em>模拟new的效果</em><br>//new是关键字，无法像bind函数直接覆盖</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Otaku</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用 new</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Otaku(……);</span><br><span class="line"><span class="comment">// 使用 objectFactory</span></span><br><span class="line"><span class="keyword">var</span> person = objectFactory(Otaku, ……)</span><br></pre></td></tr></table></figure>
-<p><em>分析</em><br>因为new的结果是一个新对象，所以在模拟实现的时候，我们也要建立一个对象，假设这个对象叫obj，因为obj具有Otaku构造函数里的属性，在继承里面，可以使用 Otaku.apply(obj, arguments)来给 obj 添加新的属性；<br>实例的__proto__属性会指向构造函数prototype，也正是因为建立起这样的关系，实例可以访问原型上的属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">objectFactory</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(),</span><br><span class="line"></span><br><span class="line">    Constructor = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">    obj.__proto__ = Constructor.prototype;</span><br><span class="line"></span><br><span class="line">    Constructor.apply(obj, <span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><em>分析</em></p>
-<ol>
-<li>用new Object() 的方式新建了一个对象 obj</li>
-<li>取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数</li>
-<li>将 obj 的原型指向构造函数，这样 obj 就可以访问到构造函数原型中的属性</li>
-<li>使用 apply，改变构造函数 this 的指向到新建的对象，这样 obj 就可以访问到构造函数中的属性</li>
-<li>返回 obj</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-HTTP协议"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/01/12/HTTP%E5%8D%8F%E8%AE%AE/"
-    >HTTP协议</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/01/12/HTTP%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2021-01-12T10:18:20.000Z" itemprop="datePublished">2021-01-12</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><p><em>HTTP特点</em></p>
-<ol>
-<li>HTTP协议是超文本传输协议，它是一个基于请求与响应、无状态、应用层的协议，常用于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议；HTTP 有多个版本，目前广泛使用的是HTTP/1.1版本。</li>
-</ol>
-<p><em>HTTP特点</em></p>
-<ol>
-<li>请求和响应基本特性：由客户端发起请求，服务端响应</li>
-<li>客户向服务器请求服务时，只需传送请求方法和路径。请求方法常有GET、POST</li>
-<li>HTTP 允许传输任意类型的数据对象。传输的类型由Content-Type以标记。 </li>
-<li>限制每次连接只处理一个请求。服务器处理完请求，并收到客户的应答后，即断开连接，但是却不利于客户端与服务器保持会话连接，为了弥补这种不足，产生了两项记录 HTTP 状态的技术，一个叫做 Cookie,一个叫做 Session。</li>
-<li>无状态是指协议对于事务处理没有记忆，后续处理需要前面的信息，则必须重传。</li>
-</ol>
-<p><em>常见的请求方法</em></p>
-<ol>
-<li>GET：请求指定的页面信息，并返回实体主体。</li>
-<li>POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。</li>
-<li>HEAD：类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
-<li>PUT：从客户端向服务器传送的数据取代指定的文档的内容。</li>
-<li>DELETE：请求服务器删除指定的页面。</li>
-</ol>
-<p><em>HTTP缺点</em></p>
-<ol>
-<li>传输：数据安全肉眼可见，能够方便的研究和分析，但也容易被窃听</li>
-<li>HTTP是不安全的，无法验证通信双方的身份</li>
 </ol>
  
       <!-- reward -->
